@@ -43,12 +43,12 @@ or_ex=0;
 // Whether or not testing on desktop should function as on mobile
 // 0 = No, play at a set size with the game centered on desktop
 // 1 = Yes, allow game to act as it would on a mobile device
-desktest=1;
+desktest=0;
 
 // Turn centering of the canvas on or off. Use this instead of the global game setting.
 // 0 = Do not center the game in the browser window
 // 1 = Do center the game in the browser window
-centering=0;
+centering=1;
 
 paused=0;
 orientation=mhtml5_check_orientation();
