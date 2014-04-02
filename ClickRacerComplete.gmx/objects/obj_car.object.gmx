@@ -25,16 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var interactiveMap;
- interactiveMap = ds_map_create();
- ds_map_add(interactiveMap, "picture", "http://MacSweeneygames.com/Clown.jpg");
- ds_map_add(interactiveMap, "link", "http://MacSweeneygames.com/");
- ds_map_add(interactiveMap, "name", "Catch The Clown");
- ds_map_add(interactiveMap, "caption", "MacSweeneygames.com");
- ds_map_add(interactiveMap, "description", "Play Catch the clown now on MacSweeney Games!");
-facebook_dialog("feed", interactiveMap, -1);
- ds_map_destroy(interactiveMap);
- 
+            <string>image_speed = 0
 speedstart = 4
 step = 0
 score = 0
@@ -169,7 +160,7 @@ if step = 0
     draw_set_font(font_small)
     draw_set_halign(fa_center)
     draw_set_valign(fa_center)
-    draw_text(room_width/2,room_height/2,"Click to Start##Controls: Click to Steer")
+    draw_text(room_width/2,room_height/2,"Tap to Start##Controls: Tap to Steer")
     if mouse_check_button_pressed(1) || keyboard_check_pressed(vk_space)
         {
         speed = speedstart
@@ -190,7 +181,7 @@ if step = 1
     dir = point_direction(0,0,sprite_width,sprite_height)
     x1 = x+lengthdir_x(len,image_angle+dir)
     y1 = y+lengthdir_y(len,image_angle+dir)
-    //draw_circle(x1,y1,2,1)
+
     if !collision_circle(x1,y1,2,obj_track,1,1)
         {
         scr_crash()
@@ -198,7 +189,7 @@ if step = 1
         
     x1 = x+lengthdir_x(len,image_angle-dir)
     y1 = y+lengthdir_y(len,image_angle-dir)
-    //draw_circle(x1,y1,2,1)
+
     if !collision_circle(x1,y1,2,obj_track,1,1)
         {
         scr_crash()
@@ -227,8 +218,7 @@ if step = 2
     
     if button(spr_button , room_width/2 - sprite_get_width(spr_button)/2 , room_height - 128 , sprite_get_width(spr_button) , sprite_get_height(spr_button),'Restart Game',-1 , -1 , '')
      || keyboard_check_pressed(vk_space)
-        {
-        //game_restart()     
+        { 
         step = 0
         x = xstart
         y = ystart
