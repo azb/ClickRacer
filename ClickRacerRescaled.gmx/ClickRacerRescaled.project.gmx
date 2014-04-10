@@ -13,6 +13,7 @@
     <sprite>sprites\spr_track</sprite>
   </sprites>
   <backgrounds name="background">
+    <background>background\background1</background>
     <background>background\back_ground</background>
   </backgrounds>
   <paths name="paths"/>
@@ -24,6 +25,7 @@
     <script>scripts\mhtml5_resize_screen.gml</script>
     <script>scripts\scr_crash.gml</script>
     <script>scripts\button.gml</script>
+    <script>scripts\adjust.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_large</font>

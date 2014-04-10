@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0
-speedstart = 4
+speedstart = 12
 step = 0
 score = 0
 lives = 3
@@ -35,6 +35,11 @@ maxlives = lives
 topscore = 0
 
 newrecord = 0
+
+juice = room_height
+
+a = 0
+ad = .1
 /*
 view_wport[0] = display_get_width()
 view_hport[0] = display_get_height()
@@ -62,9 +67,11 @@ view_hport[0] = display_get_height()
             <kind>1</kind>
             <string>if step = 1
     {
-    speed+=.2
+    speed+=.6
     alarm[1] = 10
     }
+
+
 </string>
           </argument>
         </arguments>
@@ -116,7 +123,17 @@ alarm[1] = 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if step = 1
+            <string>    
+if ad &lt; 0
+if a &lt; .3
+ad = .1
+
+if a &gt;= 1
+ad = -.1
+
+a += ad
+
+if step = 1
     {
     if mouse_check_button_pressed(1) || keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_right)
         {
@@ -160,7 +177,10 @@ if step = 0
     draw_set_font(font_small)
     draw_set_halign(fa_center)
     draw_set_valign(fa_center)
-    draw_text(room_width/2,room_height/2,"Tap to Start##Controls: Tap to Steer")
+    draw_set_alpha(a)
+    draw_text(room_width/2,room_height/2-64,"Tap to Start")
+    draw_set_alpha(1)
+    draw_text(room_width/2,room_height/2+64,"Controls: Tap to Steer")
     if mouse_check_button_pressed(1) || keyboard_check_pressed(vk_space)
         {
         speed = speedstart
@@ -207,16 +227,15 @@ if step = 1.1
 if step = 2
     {
     draw_set_font(font_large)
-    draw_text(room_width/2,room_height/2,"Game Over#Score: "+string(score))
+    draw_text(room_width/2,room_height/2 - juice,"Game Over#Score: "+string(score))
+    draw_set_alpha(a)
     draw_set_font(font_small)
     if !newrecord
-    draw_text(room_width/2,room_height/2+64,"Top Score: "+string(topscore))
+    draw_text(room_width/2,room_height/2+128 - juice,"Top Score: "+string(topscore))
     else
-    draw_text(room_width/2,room_height/2+64,"New Record!")
-    
-    draw_text(room_width/2,room_height*3/4,"Click to Restart")
-    
-    if button(spr_button , room_width/2 - sprite_get_width(spr_button)/2 , room_height - 128 , sprite_get_width(spr_button) , sprite_get_height(spr_button),'Restart Game',-1 , -1 , '')
+    draw_text(room_width/2,room_height/2+128 - juice,"New Record!")
+    draw_set_alpha(1)
+    if button(spr_button , room_width/2 - sprite_get_width(spr_button)/2 , room_height - 320 + juice , sprite_get_width(spr_button) , sprite_get_height(spr_button),'Restart Game',-1 , -1 , '')
      || keyboard_check_pressed(vk_space)
         { 
         step = 0
@@ -225,16 +244,19 @@ if step = 2
         direction = 0
         lives = maxlives
         score = 0
+        juice = 0
         }
+     juice = adjust(juice,0)
+     
     }
     
 for(i=0 ; i&lt;maxlives ; i++)
     {
-    draw_sprite_ext(spr_car , 0 , 8 + 16 + 38 * i , 8 + 16, 1 , 1 , 0 , c_gray , .5)
+    draw_sprite_ext(spr_car , 0 , 116 - 32 + 126 * i , 8 + 16*4, 1 , 1 , 0 , c_gray , .5)
     }
 for(i=0 ; i&lt;lives ; i++)
     {
-    draw_sprite(spr_car , 0 , 8 + 16 + 38 * i , 8 + 16)
+    draw_sprite(spr_car , 0 , 116 - 32 + 126 * i , 8 + 16*4)
     }
 </string>
           </argument>

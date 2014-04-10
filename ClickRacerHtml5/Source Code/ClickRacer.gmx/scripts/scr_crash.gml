@@ -13,6 +13,10 @@ if lives <= 0
         topscore = score
         newrecord = 1
         }
+    else
+        {
+        newrecord = 0
+        }
     }
 else
     {

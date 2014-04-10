@@ -48,7 +48,7 @@ desktest=0;
 // Turn centering of the canvas on or off. Use this instead of the global game setting.
 // 0 = Do not center the game in the browser window
 // 1 = Do center the game in the browser window
-centering=1;
+centering=0;
 
 paused=0;
 orientation=mhtml5_check_orientation();
