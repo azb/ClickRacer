@@ -1,0 +1,1 @@
+hspeed = argument0;

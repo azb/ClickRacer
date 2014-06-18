@@ -9,6 +9,17 @@ No redistribution as your own product allowed without prior written consent. </l
   <description>Allows you to adapt screen resolution, orientation and remove user bars etc. for optimized mobile performance.</description>
   <helpfile></helpfile>
   <installdir></installdir>
+  <classname></classname>
+  <androidclassname></androidclassname>
+  <sourcedir></sourcedir>
+  <androidsourcedir></androidsourcedir>
+  <macsourcedir></macsourcedir>
+  <maclinkerflags></maclinkerflags>
+  <androidinject></androidinject>
+  <iosSystemFrameworks/>
+  <iosThirdPartyFrameworks/>
+  <androidPermissions/>
+  <IncludedResources/>
   <files>
     <file>
       <filename>HTMLengine.js</filename>
